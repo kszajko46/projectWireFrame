@@ -2,7 +2,7 @@ function dateAndTime(date) {
   let days = [
     "Sunday",
     "Monday",
-    "Tuseday",
+    "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
@@ -48,3 +48,19 @@ let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=imperial`;
 
 axios.get(apiUrl).then(displayTemp);
+
+function search(city) {
+  let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+
+  axios.get(apiUrl).then(showWeather);
+}
+
+function search(city) {
+  let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+
+  axios.get(apiUrl).then(showWeather);
+}

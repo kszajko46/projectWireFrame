@@ -1,5 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #d0abb39f;
 }
 
 h1 {
@@ -10,7 +11,7 @@ h1 {
 }
 
 ul {
-  margin: 0;
+  margin: 92px 0px 0px 0px;
   padding: 0;
 }
 
@@ -23,6 +24,21 @@ li {
   margin: 0;
 }
 
+small {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: #420420;
+}
+a :hover {
+  color: rgb(7, 167, 167);
+  cursor: pointer;
+  transition: all 2s ease-in-out;
+}
+
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -30,23 +46,24 @@ li {
 
 .weather-app {
   padding: 20px;
-  border: 1px solid gray;
+  border: 3px solid olive;
   border-radius: 10px;
+  background-color: white;
 }
 
 .weatherTemp img {
   margin-right: 5px;
-  height: 64px;
-  width: 64px;
+  height: 100px;
+  width: 100px;
 }
 
 .weatherTemp strong {
-  font-size: 64px;
+  font-size: 50px;
   line-height: 1;
   font-weight: 400;
 }
 
 .weatherTemp .units {
   position: relative;
-  top: -32px;
+  top: -25px;
 }
