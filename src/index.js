@@ -20,58 +20,24 @@ function dateAndTime(date) {
 
   return `${day}  ${hours}:${minutes}`;
 }
-
 let now = new Date();
-let p = document.querySelector("p");
+let h2 = document.querySelector("h2");
 
-p.innerHTML = dateAndTime(now);
+h2.innerHTML = dateAndTime(now);
 
-function showWeather(response) {
+function displayTemp(response) {
   console.log(response.data);
-  document.querySelector(".place").innerHTML = response.data.name;
-  document.querySelector("#temp-hi").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
-  document.querySelector("#temp-low").innerHTML = Math.round(
-    response.data.main.temp_min
-  );
-  document.querySelector("#wind").innerHTML = response.data.wind.speed;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  let tempElement = document.querySelector("#exact-temp");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  tempElement.innerHTML = Math.round(response.data.main.temp);
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = Math.round(response.data.main.humidity);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-function search(city) {
-  let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  console.log(apiUrl);
+let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=imperial`;
 
-  axios.get(apiUrl).then(showWeather);
-}
-
-function exactWeather(event) {
-  event.preventDefault();
-  let city = document.querySelector("#city-input").value;
-
-  search(city);
-}
-
-function searchLocation(position) {
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then(showWeather);
-}
-
-function currentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
-
-let cityInformation = document.querySelector("#city-information");
-
-cityInformation.addEventListener("submit", exactWeather);
-
-let currentLocationButton = document.querySelector("#location-button");
-currentLocationButton.addEventListener("click", currentLocation);
-
-search("Chicago");
+axios.get(apiUrl).then(displayTemp);
