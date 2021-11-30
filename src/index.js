@@ -22,9 +22,9 @@ function dateAndTime(date) {
 }
 
 let now = new Date();
-let h2 = document.querySelector("h2");
+let p = document.querySelector("p");
 
-h2.innerHTML = dateAndTime(now);
+p.innerHTML = dateAndTime(now);
 
 function showWeather(response) {
   console.log(response.data);
