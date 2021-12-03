@@ -33,8 +33,9 @@ function displayTemp(response) {
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
   let cityElement = document.querySelector("#exact-loc");
+  let celsiusTemp = response.data.main.temp;
 
-  tempElement.innerHTML = Math.round(response.data.main.temp);
+  tempElement.innerHTML = Math.round(celsiusTemp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   windElement.innerHTML = Math.round(response.data.wind.speed);
@@ -48,7 +49,7 @@ function displayTemp(response) {
 
 function search(city) {
   let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemp);
 }
 
@@ -58,7 +59,30 @@ function handleSubmit(event) {
   search(citySearch.value);
 }
 
-search("Chicago");
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let tempElement = document.querySelector("#exact-temp");
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#exact-temp");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+search("Chicago");
