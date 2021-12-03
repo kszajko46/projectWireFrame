@@ -18,6 +18,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous"
         />
+        />
         <link rel="stylesheet" href="src/style.css" />
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       </head>
@@ -26,6 +27,26 @@
         <div class="container">
           <div class="weather-app-wrapper">
             <div class="weather-app">
+              <form id="search-form" class="mb-4">
+                <div class="row">
+                  <div class="col-6">
+                    <input
+                      type="search"
+                      placeholder="Enter a City"
+                      class="form-control"
+                      id="city-search"
+                      autocomplete="off"
+                    />
+                    <div class="col-2">
+                      <input
+                        type="submit"
+                        value="search"
+                        class="btn btn-primary"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </form>
               <h1 id="exact-loc"></h1>
               <h2>Tuseday 12:00</h2>
               <div class="row">

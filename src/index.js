@@ -32,11 +32,13 @@ function displayTemp(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+  let cityElement = document.querySelector("#exact-loc");
 
   tempElement.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  cityElement.innerHTML = response.data.name;
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -44,23 +46,19 @@ function displayTemp(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=imperial`;
-
-axios.get(apiUrl).then(displayTemp);
-
 function search(city) {
   let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  console.log(apiUrl);
-
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(displayTemp);
 }
 
-function search(city) {
-  let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  console.log(apiUrl);
-
-  axios.get(apiUrl).then(showWeather);
+function handleSubmit(event) {
+  event.preventDefault();
+  let citySearch = document.querySelector("#city-search");
+  search(citySearch.value);
 }
+
+search("Chicago");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
