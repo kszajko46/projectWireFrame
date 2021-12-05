@@ -61,15 +61,17 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemp(event) {
   event.preventDefault();
+  let tempElement = document.querySelector("#exact-temp");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  let tempElement = document.querySelector("#exact-temp");
   tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
 function displayCelsiusTemp(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let tempElement = document.querySelector("#exact-temp");
   tempElement.innerHTML = Math.round(celsiusTemp);
 }

@@ -11,7 +11,7 @@ h1 {
 }
 
 ul {
-  margin: 92px 0px 0px 80px;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -27,6 +27,10 @@ li {
 small {
   font-size: 12px;
   font-weight: 700;
+}
+
+.float-left {
+  float: left;
 }
 
 .weather-app-wrapper {
@@ -48,7 +52,9 @@ small {
 }
 
 .weatherTemp strong {
-  font-size: 50px;
+  font-size: 65px;
+  margin-top: 10px;
+  padding-top: 0;
   line-height: 1;
   font-weight: 400;
 }
@@ -58,19 +64,11 @@ small {
   top: -25px;
 }
 
-a {
-  text-decoration: none;
-  cursor: default;
-  color: blueviolet;
-}
-
 .weatherTemp .active {
   color: black;
   cursor: default;
-  text-decoration: none;
 }
 
 .weatherTemp .active:hover {
   text-decoration: none;
-  cursor: default;
 }
