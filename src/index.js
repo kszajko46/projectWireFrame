@@ -33,7 +33,7 @@ function displayTemp(response) {
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
   let cityElement = document.querySelector("#exact-loc");
-  let celsiusTemp = response.data.main.temp;
+  celsiusTemp = response.data.main.temp;
 
   tempElement.innerHTML = Math.round(celsiusTemp);
   descriptionElement.innerHTML = response.data.weather[0].description;
