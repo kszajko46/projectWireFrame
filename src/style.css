@@ -77,3 +77,16 @@ a {
 .weatherTemp .active:hover {
   text-decoration: none;
 }
+
+.week {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.weatherTempTwo {
+  font-size: 13px;
+}
+
+.weatherTempMin {
+  opacity: 0.8;
+}
