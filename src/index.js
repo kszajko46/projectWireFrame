@@ -25,6 +25,32 @@ let h2 = document.querySelector("h2");
 
 h2.innerHTML = dateAndTime(now);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+                  <div class="col-2">
+                    <div class="dayTwo">${day}</div>
+                    <img
+                      src="http://openweathermap.org/img/wn/04n@2x.png"
+                      alt="forcast"
+                      width="40px"
+                    />
+                    <div class="weatherTempTwo">
+                      <span class="weatherTempMax">18°</span>
+                      <span class="weatherTempMin">12°</span>
+                    </div>
+                  </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemp(response) {
   console.log(response.data);
   let tempElement = document.querySelector("#exact-temp");
@@ -88,3 +114,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Chicago");
+displayForecast();
