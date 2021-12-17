@@ -36,7 +36,7 @@
             <div class="weather-app">
               <form id="search-form" class="mb-4">
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-8">
                     <input
                       type="search"
                       placeholder="Enter a City"
@@ -55,7 +55,7 @@
                 </div>
               </form>
               <h1 id="exact-loc"></h1>
-              <h2>Tuseday 12:00</h2>
+              <h2 class="dateTime">Tuseday 12:00</h2>
               <div class="row">
                 <div class="col-6">
                   <div class="clearfix weatherTemp">
@@ -67,13 +67,7 @@
                     />
                     <div class="float-left">
                       <strong id="exact-temp">54</strong
-                      ><span class="units"
-                        ><a href="#" id="celsius-link" class="active">℃</a>|<a
-                          href="#"
-                          id="fahrenheit-link"
-                          >℉</a
-                        ></span
-                      >
+                      ><span class="units">°F</span>
                     </div>
                   </div>
                 </div>
@@ -81,14 +75,14 @@
                   <ul>
                     <li id="description"></li>
                     <li>Humidity:<span id="humidity"></span>%</li>
-                    <li>wind:<span id="wind"></span> MPH</li>
+                    <li>wind:<span id="wind"></span> mph</li>
                   </ul>
                 </div>
               </div>
               <div class="week" id="forecast">
                 <div class="row">
                   <div class="col-2">
-                    <div class="dayTwo">Thursday</div>
+                    <div class="sixDayForecast">Thursday</div>
                     <img
                       src="http://openweathermap.org/img/wn/04n@2x.png"
                       alt="forcast"

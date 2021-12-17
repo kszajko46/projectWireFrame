@@ -13,6 +13,7 @@ h1 {
 ul {
   margin: 0 auto;
   padding: 0;
+  float: right;
 }
 
 li {
@@ -33,6 +34,15 @@ small {
 a {
   color: #3d0240;
   text-decoration: none;
+}
+
+#city-search {
+  padding: 3px;
+}
+
+.dateTime {
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
 .float-left {
@@ -69,19 +79,15 @@ a {
   font-weight: 800;
 }
 
-.weatherTemp .active {
-  color: #3d0240;
-  cursor: default;
-}
-
-.weatherTemp .active:hover {
-  text-decoration: none;
+.btn {
+  padding: 3px 10px;
+  background-color: black;
+  border: none;
 }
 
 .week {
   text-align: center;
   margin-top: 10px;
-  margin-left: 18px;
 }
 
 .weatherTempTwo {
@@ -90,4 +96,8 @@ a {
 
 .weatherTempMin {
   opacity: 0.8;
+}
+
+.sixDayForecast {
+  font-size: 10px;
 }

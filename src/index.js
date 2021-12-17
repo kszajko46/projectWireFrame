@@ -53,7 +53,9 @@ function displayForecast(response) {
         forecastHTML +
         `
                   <div class="col-2">
-                    <div class="dayTwo">${formatDay(forecastDay.dt)}</div>
+                    <div class="sixDayForecast">${formatDay(
+                      forecastDay.dt
+                    )}</div>
                     
                     <img
                       src="http://openweathermap.org/img/wn/${
@@ -79,7 +81,7 @@ function displayForecast(response) {
 
 function getForecast(coordinates) {
   let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -109,7 +111,7 @@ function displayTemp(response) {
 
 function search(city) {
   let apiKey = "1921aa558d6b3e6d5b52f0eeb4ab5751";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayTemp);
 }
 
@@ -128,23 +130,7 @@ function displayFahrenheitTemp(event) {
   tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let tempElement = document.querySelector("#exact-temp");
-  tempElement.innerHTML = Math.round(celsiusTemp);
-}
-
-let celsiusTemp = null;
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Chicago");
